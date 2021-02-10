@@ -1,0 +1,27 @@
+image: node:latest
+
+definitions:
+  step: &deploy-to-auth0
+    caches:
+      - node
+    script:
+      - yarn install
+      - declare -x VERSION=cqm-auth0@$(node -p "require('./package.json').version")
+      - yarn build:auth0
+      - yarn global add auth0-deploy-cli
+      - a0deploy deploy -c tenant-config.json -i tenant.yaml
+
+pipelines:
+  branches:
+    master:
+      - step:
+          <<: *deploy-to-auth0
+          name: Deploying to cqm-dev
+          deployment: test
+  custom:
+    release:
+      - step:
+          name: 'Create Release'
+          script:
+            - yarn add -D -W semantic-release @semantic-release/changelog @semantic-release/git conventional-changelog-conventionalcommits semantic-release-slack-bot semantic-release-monorepo lerna
+            - yarn release

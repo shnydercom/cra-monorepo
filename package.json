@@ -1,0 +1,68 @@
+{
+	"name": "cra-monorepo",
+	"version": "1.0.0",
+	"private": "true",
+	"scripts": {
+		"lint": "yarn workspaces run lint",
+		"release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
+	},
+	"release": {
+		"extends": "semantic-release-monorepo",
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			[
+				"@semantic-release/release-notes-generator",
+				{
+					"preset": "conventionalcommits",
+					"presetConfig": {
+						"commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commits/{{hash}}",
+						"compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/branches/compare/{{currentTag}}%0D{{previousTag}}"
+					}
+				}
+			],
+			[
+				"semantic-release-slack-bot",
+				{
+					"notifyOnSuccess": true,
+					"notifyOnFail": true,
+					"markdownReleaseNotes": true
+				}
+			],
+			"@semantic-release/changelog",
+			[
+				"@semantic-release/npm",
+				{
+					"npmPublish": false
+				}
+			],
+			"@semantic-release/git"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:coformatique/cra-monorepo.git"
+	},
+	"workspaces": [
+		"packages/*"
+	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint"
+		}
+	},
+	"devDependencies": {
+		"@semantic-release/changelog": "5.0.1",
+		"@semantic-release/git": "9.0.0",
+		"@testing-library/jest-dom": "5.11.9",
+		"@testing-library/react": "11.2.5",
+		"@testing-library/user-event": "12.6.3",
+		"@types/node": "14.14.25",
+		"conventional-changelog-conventionalcommits": "4.5.0",
+		"husky": "4.3.8",
+		"lint-staged": "10.5.4",
+		"prettier": "2.2.1",
+		"semantic-release": "17.3.7",
+		"semantic-release-slack-bot": "2.1.0",
+		"typescript": "4.1.3"
+	}
+}

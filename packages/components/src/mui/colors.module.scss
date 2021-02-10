@@ -1,0 +1,11 @@
+$colors: (
+	'background': #fafafa,
+	'primary': #111199,
+	'secondary': #11d7ee
+);
+
+:export {
+	@each $key, $value in $colors {
+		#{unquote($key)}: $value;
+	}
+}
