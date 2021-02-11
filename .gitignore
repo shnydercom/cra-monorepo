@@ -36,3 +36,4 @@ storybook-static
 lib
 lib-esm
 *.tsbuildinfo
+dist

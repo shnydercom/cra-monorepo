@@ -17,9 +17,14 @@
 		"web-vitals": "^1.0.1",
 		"@your-npm-org/ui-lib": "*"
 	},
+	"devDependencies": {
+		"gulp": "4.0.2",
+		"gulp-inline-source": "4.0.0",
+		"gulp-replace": "1.0.0"
+	},
 	"scripts": {
 		"theme:start": "react-scripts start",
-		"theme:build": "react-scripts build",
+		"theme:build": "react-scripts build && yarn gulp",
 		"theme:test": "react-scripts test",
 		"theme:eject": "react-scripts eject"
 	},
