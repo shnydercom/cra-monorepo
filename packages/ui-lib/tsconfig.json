@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"outDir": "lib",
+		"declaration": true,
+		"noEmit": false
+	},
+	"exclude": ["node_modules", "lib-esm", "lib", "**/*.story*", "**/*.spec*"],
+	"include": ["src"]
+}
