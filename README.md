@@ -10,10 +10,13 @@ ui-lib compiles to /lib and /lib-esm, because the declaration files (.d.ts) can'
 linter at the root is made up like this:
 https://github.com/facebook/create-react-app/tree/master/packages/eslint-config-react-app
 
-- simplifying the project, take out tsdx
+## latest TODOs --> DONEs
+
+- simplified the project, removed packages/app and packages/components
+- the bulk of root dependencies comes from this: https://www.npmjs.com/package/eslint-config-react-app
 - kept lint-staged --> actually it does run only on staged files, behaviour as wanted
 - semantic release --> moved config to file. "extends" keyword included there as well
-- cleanup
+- cleanup done
 
 ## output of semantic-release:
 
