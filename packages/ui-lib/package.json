@@ -10,7 +10,8 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"libbuild": "tsc && tsc --build tsconfig.esm.json && yarn compcss",
-		"compcss": "yarn sass src/:lib/ && yarn sass src/:lib-esm/"
+		"compcss": "yarn sass src/:lib/ && yarn sass src/:lib-esm/",
+		"libwatch": "concurrently \"tsc --build tsconfig.esm.json --watch\" \"yarn sass src/:lib-esm/ --watch\""
 	},
 	"author": "shnyder.com",
 	"license": "MIT",
