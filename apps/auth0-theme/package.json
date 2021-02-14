@@ -24,9 +24,9 @@
 	},
 	"scripts": {
 		"theme:start": "react-scripts start",
-		"theme:build": "react-scripts build && yarn gulp",
-		"theme:test": "react-scripts test",
-		"theme:eject": "react-scripts eject"
+		"build": "react-scripts build && yarn gulp",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": [

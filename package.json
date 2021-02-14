@@ -5,9 +5,12 @@
 	"scripts": {
 		"story": "lerna run storybook --stream",
 		"libbuild": "lerna run libbuild --stream",
-		"prestart": "yarn libbuild",
+		"prestart": "lerna run libbuild --stream",
 		"start": "lerna run start --stream",
+		"watch": "concurrently \"lerna run libwatch --stream\" \"lerna run start --stream\"",
+		"watch:theme": "concurrently \"lerna run libwatch --stream\" \"lerna run theme:start --stream\"",
 		"lint": "yarn workspaces run lint",
+		"build": "yarn libbuild && lerna run build --stream",
 		"release": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo"
 	},
 	"repository": {
